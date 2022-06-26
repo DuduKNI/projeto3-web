@@ -4,7 +4,7 @@ const Post = require('../models/Post')
 
 //ROTAS
 
- //RECUPERA TODOS OS POSTS
+//RECUPERA TODOS OS POSTS
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find()

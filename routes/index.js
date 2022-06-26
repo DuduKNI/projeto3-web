@@ -4,11 +4,12 @@ const UserController = require('../controllers/UserController')
 const SessionController = require('../controllers/Login')
 const MovieController = require('../controllers/MovieController')
 const { authenticate } = require('../Middlewares')
+const router = require('./posts')
 
 const routes = Router()
 
 routes.get('/', (req, res) => {
-  res.send('Olá mundo')
+  res.render('../index.html')
 })
 
 routes.post('/users', UserController.createUser) //Criar usuário

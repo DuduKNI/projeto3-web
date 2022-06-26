@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const ejs = require('ejs')
+const path = require('path')
 const router = express.Router()
 const app = express()
 const bodyParser = require('body-parser')
@@ -26,6 +28,9 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.log('Conectado ao banco')
 )
 
+app.engine('html', require('ejs').renderFile)
+app.set('view engine', 'html')
+app.use(express.static(__dirname));
 app.use(cors())
 app.use(express.json())
 app.use(routes)
