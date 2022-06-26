@@ -47,8 +47,18 @@ const MovieController = {
 
   async getMovies(req, res) {
     try {
+      const movieName = req.query.name
       const movies = await Movie.find()
-      res.status(200).json(movies)
+
+        const filteredList = []
+        if(req.query.name !== ''){
+          movies.forEach(movie => {
+            if (movie.movieName.toLocaleLowerCase().search(movieName.toLocaleLowerCase()) > -1) {
+              filteredList.push(movie)
+            }
+          })
+        } 
+      res.status(200).json(filteredList)
     } catch (err) {
       return res.status(400).json(err)
     }
