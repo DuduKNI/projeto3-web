@@ -19,7 +19,10 @@ const postsRoute = require('./routes/posts')
 // })
 
 //Conexão Banco de Dados
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
+const url =
+  'mongodb+srv://projeto3:projeto3@cluster0.a6kvmij.mongodb.net/?retryWrites=true&w=majority'
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.log('Conectado ao banco')
 )
 
@@ -27,4 +30,8 @@ app.use(cors())
 app.use(express.json())
 app.use(routes)
 
-app.listen(3000)
+app.listen(process.env.PORT || 5000, () =>
+  console.log(`Listening on ${process.env.PORT || 5000}`)
+)
+
+module.exports = mongoose

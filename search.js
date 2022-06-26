@@ -14,7 +14,7 @@ container.classList.add('card')
 document.getElementById('button-search').addEventListener('click', function () {
   container.innerText = ''
   var query = document.getElementById('input-search').value
-  axios.get('http://localhost:3000/movies?name=' + query).then(function (res) {
+  axios.get('http://localhost:5000/movies?name=' + query).then(function (res) {
     var data = res.data
     console.log(data)
     for (var i = 0; data.length && i < 15; i++) {
